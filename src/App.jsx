@@ -118,7 +118,7 @@ export class App extends Component {
     return (
       <main>
         <header>
-          <h1>Minesweeper!</h1>
+          <h1>Sweeper of Mines!</h1>
           <p>{this.state.state}</p>
           <p>Mines: {this.state.mines}</p>
           <p>
