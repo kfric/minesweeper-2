@@ -45,7 +45,8 @@ export class App extends Component {
     const game = await response.json()
     this.setState(game)
   }
-  handleRightClick = async (rowIndex, colIndex) => {
+  handleRightClick = async (event, rowIndex, colIndex) => {
+    event.preventDefault()
     const body = { row: rowIndex, col: colIndex }
     const response = await fetch(
       `https://minesweeper-api.herokuapp.com/games/${this.state.id}/flag`,
@@ -71,7 +72,9 @@ export class App extends Component {
             key={colIndex}
             //                       need to pass indexes through function
             onClick={() => this.handleClickedCell(rowIndex, colIndex)}
-            onContextMenu={() => this.handleRightClick(rowIndex, colIndex)}
+            onContextMenu={() =>
+              this.handleRightClick(event, rowIndex, colIndex)
+            }
           >
             {/* pass 'cell' as li */}
             {cell}
