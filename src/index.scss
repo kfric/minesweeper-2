@@ -27,5 +27,11 @@ li {
   height: 2rem;
   width: 2rem;
   border: 1px solid black;
+  background-color: rgba(129, 129, 129, 0.432);
   display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+li:hover {
+  background-color: grey;
 }
