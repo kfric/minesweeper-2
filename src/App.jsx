@@ -32,6 +32,20 @@ export class App extends Component {
     this.setState(game)
   }
 
+  handleClickedCell = async (rowIndex, colIndex) => {
+    const body = { row: rowIndex, col: colIndex }
+    const response = await fetch(
+      `https://minesweeper-api.herokuapp.com/games/${this.state.id}/check`,
+      {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(body),
+      }
+    )
+    const game = await response.json()
+    this.setState(game)
+  }
+
   render() {
     // loop through the board array
     // boardGrid = board.map - take every rowIndex and get the contents as 'row'
@@ -39,7 +53,16 @@ export class App extends Component {
       // foreach 'row' take every colIndex and get the contents of that 'cell'
       return row.map((cell, colIndex) => {
         // return each cell for each li
-        return <li key={colIndex}>{cell}</li>
+        return (
+          <li
+            key={colIndex}
+            //                       need to pass indexes through function
+            onClick={() => this.handleClickedCell(rowIndex, colIndex)}
+          >
+            {/* pass 'cell' as li */}
+            {cell}
+          </li>
+        )
       })
     })
     return (
