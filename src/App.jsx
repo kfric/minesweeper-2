@@ -89,6 +89,21 @@ export class App extends Component {
     }
   }
 
+  // Am I on the right track with changing the game 'status' msg?
+  // changeStatusMessage = state => {
+  //   switch (state) {
+  //     case 'new':
+  //       return 'New Game stated. Good Luck'
+  //     case 'playing':
+  //       return 'Game in progres...'
+  //     case 'won':
+  //       return 'Crisis everted!'
+  //     case 'lost':
+  //       return 'LOOOOSSSERRRR'
+  //     default:
+  //   }
+  // }
+
   render() {
     // loop through the board array
     // boardGrid = board.map - take every rowIndex and get the contents as 'row'
