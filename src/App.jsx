@@ -59,6 +59,35 @@ export class App extends Component {
     const game = await response.json()
     this.setState(game)
   }
+  changeIcon = cell => {
+    switch (cell) {
+      case 'F':
+        return '🚩'
+      case '_':
+        return ' '
+      case '*':
+        return '💣'
+      case '@':
+        return '💢'
+      default:
+        return cell
+    }
+  }
+
+  changeCellClassName = cell => {
+    switch (cell) {
+      case 'F':
+        return 'flag'
+      case '_':
+        return 'free'
+      case '*':
+        return 'bomb'
+      case '@':
+        return 'flag-bomb'
+      default:
+        return cell
+    }
+  }
 
   render() {
     // loop through the board array
@@ -72,12 +101,16 @@ export class App extends Component {
             key={colIndex}
             //                       need to pass indexes through function
             onClick={() => this.handleClickedCell(rowIndex, colIndex)}
+            // when cell is right clicked perform handRightClick function
             onContextMenu={() =>
               this.handleRightClick(event, rowIndex, colIndex)
             }
+            // when the cell is clicked preform changeCellClassName(cell)
+            // assign to className of Li
+            className={this.changeCellClassName(cell)}
           >
-            {/* pass 'cell' as li */}
-            {cell}
+            {/* pass 'cell' as each li */}
+            {this.changeIcon(cell)}
           </li>
         )
       })
@@ -87,6 +120,7 @@ export class App extends Component {
         <header>
           <h1>Minesweeper!</h1>
           <p>{this.state.state}</p>
+          <p>Mines: {this.state.mines}</p>
           <p>
             <button onClick={this.handleNewGame}>New Game</button>
           </p>

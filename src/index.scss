@@ -35,3 +35,15 @@ li {
 li:hover {
   background-color: grey;
 }
+li.flag {
+  background-color: rgba(0, 128, 0, 0.411);
+}
+li.bomb {
+  background-color: red;
+}
+li.flag-bomb {
+  background-color: yellow;
+}
+li.free {
+  background-color: white;
+}
