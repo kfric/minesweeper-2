@@ -13,9 +13,9 @@ export class App extends Component {
       ['_', '_', '_', '_', '_', '_', '_', '_'],
       ['_', '_', '_', '_', '_', '_', '_', '_'],
     ],
-    state: 'new',
-    mines: 10,
-    difficulty: 0,
+    state: null,
+    mines: null,
+    difficulty: null,
   }
 
   handleNewGame = async () => {
